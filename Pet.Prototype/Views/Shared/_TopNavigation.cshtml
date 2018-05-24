@@ -1,0 +1,108 @@
+﻿
+<div class="row menu">
+    <nav class="navbar navbar-static-top" role="navigation" style="text-align:center; margin-bottom: 0;position:fixed;z-index:2500;width:100%;box-shadow: 2px 2px 2px #283E4A;">
+        <div class="menu-space">
+            <ul>
+                <li class="navbar-left">
+                    <div class="lang-div" style="margin-left:20px;overflow: hidden; word-wrap:normal;">
+                       <a href="#" style="display:none;">г. Астана</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ul class="nav navbar-top-links">
+            <li>
+                <div>
+                    <div class="top-menu-list btn-group">
+                        <a class="btn btn-outline btn-active dim btn-main" style="" href="/"><i class="fa fa-home"></i> <div>Главная</div></a>
+                        <div style="float:left">
+                            <a data-toggle="dropdown" class="btn btn-outline dim btn-main" href="#"><i class="fa fa-language"></i><div>Информация</div></a>
+                            <div class="dropdown-menu dropdown-submenu">
+                                <div class="dropdown-submenu-item"><a href="#">Регламент</a></div>
+                                <div class="dropdown-submenu-item"><a href="#">Законодательство</a></div>
+                                <div class="dropdown-submenu-item"><a href="#">Инструкция</a></div>
+                                <div class="dropdown-submenu-item"><a href="#">FAQ</a></div>
+                            </div>
+                        </div>
+                        <div style="float:left">
+                            <a data-toggle="dropdown" class="btn btn-outline dim btn-main" href="#"><i class="fa fa-language"></i><div>Реестр</div></a>
+                            <div class="dropdown-menu dropdown-submenu">
+                                <div class="dropdown-submenu-item"><a href="#">Аккредитованные участники</a></div>
+                                <div class="dropdown-submenu-item"><a href="#">Недобросовестные участники</a></div>
+                                <div class="dropdown-submenu-item"><a href="#">Зарегистрированные пользователи</a></div>
+                            </div>
+                        </div>
+                        <div style="float:left">
+                            <a data-toggle="dropdown" class="btn btn-outline dim btn-main" href="#"><i class="fa fa-language"></i><div>Новости</div></a>
+                            <div class="dropdown-menu dropdown-submenu">
+                                <div class="dropdown-submenu-item"><a href="#">Объявления</a></div>
+                                <div class="dropdown-submenu-item"><a href="#">В СМИ</a></div>
+                            </div>
+                        </div>
+                        <a data-toggle="dropdown" class="btn btn-outline dim btn-main" href="#"><i class="fa fa-question-circle"></i><div>Помощь</div></a>
+
+                    </div>
+                </div>
+            </li>
+
+            @*@if (false)
+            {
+             
+                <li class="navbar-right">
+                </li>
+
+                <li class="navbar-right">
+                    <div class="btn-group acc-btn-div">
+                        <a class="btn dropdown-toggle btn-success btn-zakon btn-main" data-toggle="dropdown" href="#" style="background:#283E4A">
+                            <i class="fa fa-user-circle-o"></i> <div>Профиль</div>
+
+                        </a>
+                        <div class="dropdown-menu  dropdown-menu-right" style="padding: 5px;background:#415C7C">
+                            <div class="dropdown-profile">
+                                <div class="dropdown-submenu-item"><a href="#">Администратор</a></div>
+                                <div class="dropdown-submenu-item"><a href="#">Тест</a></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </li>
+            }
+            else
+            {
+                <li class="navbar-right">
+                    <div class="btn-group acc-btn-div">
+                        <a class="btn dropdown-toggle btn-success btn-zakon btn-main" style="background:#283E4A" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user-circle-o"></i> <div>Войти<span class="caret"></span></div>
+                        </a>
+                        <div class="dropdown-menu  dropdown-menu-right" style="padding: 5px; background-color: #415C7C">                           
+                            <a href="#" style="padding-left: 0px;">Зарегистрироваться</a>
+                        </div>
+                    </div>
+
+
+                </li>
+
+            }*@
+            <li class="navbar-right">
+                <div >
+                    <ul  class="lang-div">
+                        <li class="dropdown-submenu-item"><a href="@Url.Action("Register2","Account")"><i class="fa fa-user"></i> Зарегистрироваться | </a></li>
+                        <li class="dropdown-submenu-item"><a href="@Url.Action("Login","Account")"><i class="fa fa-unlock-alt"></i> Войти</a></li>
+                    </ul>
+                </div>
+            </li>          
+            <li class="navbar-right">
+            </li>
+            <li class="navbar-right">
+                <ul class="lang-div">
+                    <li class="dropdown-submenu-item"><a href="#">Қаз | </a></li>
+                    <li class="dropdown-submenu-item"><a href="#">Рус |</a></li>                 
+                    <li class="dropdown-submenu-item hide"><a href="#">Eng</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+

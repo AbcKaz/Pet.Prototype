@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Главная";
+}
+<div class="main-page"> 
+    <div class="main-left">
+        <div>
+            <a href="#"><img src="/images/rkao-logo.png" style="width: 50%" /></a> <br /><br />
+            @*<a href="#"><img src="/images/kaztransgaz.png" style="width: 100%" /></a> <br /><br />*@
+            Портал электронных торгов
+        </div>
+        <div style="margin-top: 10px; display:none;">
+            <a href="#"><button class="btn btn-zakon btn-success" style="width:100%;">Тест</button></a>
+            <a href="/ru/Account/Login"><button class="btn btn-zakon btn-success" style="width:100%; margin-top: 15px">Войти</button></a>
+            <a href="/ru/Account/Register"><button class="btn btn-zakon btn-success" style="width:100%; margin-top: 15px">Регистрация</button></a>
+
+        </div>
+    </div>
+    <div class="main-content_" style="padding-bottom:15px;">
+        @Html.Partial("_SearchPanel")
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="dashboard-container" style="margin: 0 auto; overflow: hidden;width:100%;">
+                    <div style="overflow:hidden; padding-left: 15px; padding-right: 15px;">
+                        @Html.Partial("_DashboardItem")
+                        @Html.Partial("_DashboardItem")
+                        @Html.Partial("_DashboardItem")
+                        @Html.Partial("_DashboardItem")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

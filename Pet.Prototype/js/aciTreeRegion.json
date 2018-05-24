@@ -1,0 +1,50 @@
+﻿[
+  {
+    "id": 1,
+    "label": "г.Астана",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 2,
+    "label": "г.Алматы",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 3,
+    "label": "Акмолинская обл.",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 4,
+    "label": "Алматинская обл.",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 5,
+    "label": "Восточно-Казахстанская обл.",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 5,
+    "label": "Западно-Казахстанская обл.",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  }
+]

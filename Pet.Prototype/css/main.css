@@ -1,0 +1,182 @@
+﻿.content-main{
+    background-color: #507299;/*#507299;*/ /*#7790ad;*/
+    padding-bottom:2px;
+	/* border: 1px solid black;
+	 box-shadow: 0 0 10px rgba(0,0,0,0.5)*/
+    border: none;
+    
+}
+
+.vvi .content-main {
+    background-color: white; 
+    color: black;
+}
+.input-text-search{
+    height:34px;
+}
+.extended-search{
+    padding-top:5px;
+}
+.extended-search .btn-group  .btn-success
+{
+    background-color:#305075;
+    border-color:#305075;
+}
+.padding-block{
+    margin-bottom: 43px;
+}
+.custom-button{
+    width: 100px;
+}
+ul.list-section button{
+    width:40px;
+}
+ul.list-section li{
+    list-style:none;
+    float:left;
+    padding:0px;    
+    margin-left: 2px;
+margin-right: 2px;
+margin-top: 2px;
+}
+.left-block .ibox-title{
+    background-color:#507299;
+    padding: 9px 15px 7px;
+    min-height: 37px;
+}
+.left-block .btn-default{
+    margin-bottom:0px;      
+}
+.left-block .btn-group-vertical{
+    width: 117%;
+}
+.ibox-content .h-color{
+    color:#000;
+}
+.ibox-content .btn-group-vertical{
+    margin-left: -17px;
+    
+}
+.ibox-content .btn-group-vertical .btn-default{
+    text-align: left;
+}
+.advanced-search{
+    background-color:#fffbf0;
+    margin-top:3px;
+}
+#data_1 .font-normal{
+    font-weight:bold;
+}
+.advanced-selected .form-group{
+    margin-right:15px;
+    margin-left:0px;
+}
+ul.top-menu-list{
+    list-style:none;
+
+}
+.top-menu-list li{
+    float:left;
+    padding-right:17px;
+}
+.top-menuList{
+    padding-left: 15px
+}
+.notBorder li{
+    border:none;
+}
+.notBorder .list-group-item{
+    padding: 7px 0px;
+}
+
+.section-filter{
+    margin-top:7px;
+}
+.cnt_result{
+    color:#ffffff;
+    margin-left:70px;
+}
+.title-act{
+    height:18px;
+    overflow: hidden;
+    margin-bottom:10px;
+    font-weight:bolder;
+}
+.block-scroll{
+    position: fixed;
+    margin-top: 1%;
+    margin-left: 39%;  
+    cursor:pointer;  
+}
+.list-alfavit{
+    list-style:none;
+    margin-left: 0px;
+    overflow:hidden;
+}
+ul.list-alfavit li{   
+    float:left;
+    margin-left: 9px;
+    width: 28%;
+}
+.balans h5, .balans h1{
+    color:inherit;
+}
+
+.advanced-button {
+    background-color: #507299;
+    padding:5px;
+    /*border-color: #1a7bb9;*/
+    color: #FFFFFF;
+    float:right;
+}
+
+.advanced-button2 {
+    background-color: #507299;
+    padding:5px;
+    /*border-color: #1a7bb9;*/
+    color: #FFFFFF;
+    float:right;
+}
+
+.partners-img {
+    display: block;
+    background-position: center;
+    background-size: cover;
+    height: 95px;
+    width: 95px;
+    border-radius: 50%;
+    border: 0px solid rgba(0, 55, 140, 0.5);
+    margin-bottom: 15px;
+}
+
+.partner1 {
+    background-image:url('/images/partners/парт2.jpg');
+}
+
+.partner14 {
+    background-image:url('/images/partners/парт14.jpg');
+}
+
+.partner15 {
+    background-image:url('/images/partners/парт15.jpg');
+}
+
+.partner17 {
+    background-image:url('/images/partners/парт17.jpg');
+}
+
+.partner19 {
+    background-image:url('/images/partners/парт19.jpg');
+}
+
+.partner6 {
+    background-image:url('/images/partners/парт6.jpg');
+}
+
+.partner7 {
+    background-image:url('/images/partners/парт7.jpg');
+}
+
+.partner16 {
+    background-image:url('/images/partners/парт16.jpg');
+}

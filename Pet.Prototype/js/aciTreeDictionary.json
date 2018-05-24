@@ -1,0 +1,40 @@
+﻿[
+  {
+    "id": 1,
+    "label": "Словарь юридических терминов",
+    "inode": false,
+
+    "checkbox": true,
+    "radio": false
+
+
+  },
+  {
+    "id": 47,
+    "label": "Русско-казахский терминологический словарь",
+    "inode": false,
+
+    "checkbox": true,
+    "radio": false
+
+
+  },
+    {
+    "id": 47,
+    "label": "Казахско-русский словарь юридических терминов и понятий",
+    "inode": false,
+
+    "checkbox": true,
+    "radio": false
+
+
+  },
+  {
+    "id": 84,
+    "label": "Словарь термионов из БД",
+    "inode": false,
+    "checkbox": true,
+    "radio": false
+
+  }
+]

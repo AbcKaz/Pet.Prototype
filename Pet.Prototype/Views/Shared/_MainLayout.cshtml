@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Портал электронных торгов</title>
+    <link rel="icon" type="image/png" href="/images/bd_zan.ico" />
+
+    <!--<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>-->
+    <!-- Add local styles, mostly for plugins css file -->
+    <link href="~/lib/tether/dist/css/tether.css" rel="stylesheet" />
+    <link href="~/lib/tether/dist/css/tether-theme-arrows.css" rel="stylesheet" />
+    <link href="~/lib/components-font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/lib/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet" />
+    <link href="~/lib/datapicker/datepicker3.css" rel="stylesheet" />
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/lib/gritter/jquery.gritter.css" rel="stylesheet" />
+    <link href="~/lib/summernote/summernote.css" rel="stylesheet" />
+    <link href="~/lib/summernote/summernote-bs3.css" rel="stylesheet" />
+    <link href="~/lib/dataTables/datatables.min.css" rel="stylesheet" />
+    <link href="~/lib/select2/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
+    <link href="~/lib/iCheck/custom.css" rel="stylesheet" />
+    <script src="~/lib/fullcalendar/moment.min.js"></script>
+    <link href="~/lib/owlSlider/dist/assets/owl.carousel.css" rel="stylesheet" />
+    <link href="~/lib/owlSlider/dist/assets/owl.theme.default.css" rel="stylesheet" />
+    <link href="~/lib/fullcalendar/fullcalendar.css" rel="stylesheet" />
+    <link href="~/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/lib/aciTree/css/aciTree.css" rel="stylesheet" />
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <!-- <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>     -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114096160-1"></script>
+   
+
+</head>
+<body>
+    @*@if (ViewBag.Toastr != null)
+    {
+        if (ViewBag.Toastr is IList<ToastrViewModel>)
+        {
+            foreach (var toastr in ViewBag.Toasts)
+            {
+                @Html.Partial("_Toastr", (ToastrViewModel)toastr)
+            }
+        }
+        else
+        {
+            @Html.Partial("_Toastr", (ToastrViewModel)ViewBag.Toastr);
+        }
+    }*@
+
+    <div id="wrapper" class="">
+    
+        @Html.Partial("_TopNavigation")
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg">
+            <!-- Main view  -->
+            @RenderBody()
+            <!-- Footer -->
+        </div>
+    </div>
+    @Html.Partial("_Footer")
+ 
+
+    <div class="loader-container">
+        <div class="loader-div">
+            <img src="~/images/loader.gif" />
+            <div>Загрузка...</div>
+        </div>
+    </div>
+
+    <!-- End wrapper-->
+    <!-- Section for main scripts render -->
+    <script src="~/js/bootstrap.js"></script>
+    <script src="~/lib/morris/raphael-2.1.0.min.js"></script>
+    <script src="~/lib/morris/morris.js"></script>
+    <script src="~/lib/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/lib/metisMenu/metisMenu.min.js"></script>
+    <!-- Flot -->
+    <script src="~/lib/flot/jquery.flot.js"></script>
+    <script src="~/lib/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="~/lib/flot/jquery.flot.spline.js"></script>
+    <script src="~/lib/flot/jquery.flot.resize.js"></script>
+    <script src="~/lib/flot/jquery.flot.pie.js"></script>
+    <script src="~/lib/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
+    <script src="~/lib/jquery.pretty-text-diff.min.js/diff_match_patch.js"></script>
+    <script src="~/lib/jquery.pretty-text-diff.min.js/jquery.pretty-text-diff.min.js"></script>
+    <!-- Peity -->
+    <script src="~/lib/peity/jquery.peity.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <!--script src="js/plugins/toastr/toastr.min.js"></script-->
+    <script src="~/lib/pace/pace.min.js"></script>
+    <script src="~/lib/sweetalert/sweetalert.min.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/lib/bootstrap-checkbox/dist/js/bootstrap-checkbox.js"></script>
+    <script src="~/lib/bootstrap-checkbox/dist/js/i18n/ru.js"></script>
+    <script src="~/lib/es6-promise/es6-promise.auto.js"></script>
+    <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>-->
+    <!-- jQuery UI -->
+    <script src="~/lib/jquery-ui/jquery-ui.min.js"></script>
+    <!-- GITTER -->
+    <script src="~/lib/gritter/jquery.gritter.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/lib/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- ChartJS-->
+    <script src="~/lib/chartJs/Chart.min.js"></script>
+    <!-- Toastr -->
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <!-- DataTables -->
+    <script src="~/lib/dataTables/datatables.min.js"></script>
+    <script src="~/js/inspinia.js"></script>
+    <!-- Skin config script - only for demo purpose-->
+    <script src="~/js/skin.config.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/lib/summernote/summernote.min.js"></script>
+    <!-- Select2 -->
+    <script src="~/lib/select2/select2.full.min.js"></script>
+    <!-- Bootpag -->
+    <script src="~/lib/jquery.bootpag/jquery.bootpag.min.js"></script>
+    <!-- ICkeck -->
+    <script src="~/lib/iCheck/icheck.min.js"></script>
+    <script src="~/lib/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>
+    <script src="~/lib/jquery-mockjax/dist/jquery.mockjax.js"></script>
+    <script src="~/lib/aciTree/js/jquery.aciPlugin.min.js"></script>
+    <script src="~/lib/aciTree/js/jquery.aciSortable.min.js"></script>
+    <script src="~/lib/aciTree/js/jquery.aciTree.dom.js"></script>
+    <script src="~/lib/aciTree/js/jquery.aciTree.core.js"></script>
+    <script src="~/lib/aciTree/js/jquery.aciTree.utils.js"></script>
+    <script src="~/lib/aciTree/js/jquery.aciTree.selectable.js"></script>
+    <script src="~/lib/aciTree/js/jquery.aciTree.checkbox.js"></script>
+    <script src="~/lib/aciTree/js/jquery.aciTree.radio.js"></script>
+    <script src="~/lib/aciTree/js/jquery.aciTree.column.js"></script>
+    <script src="~/lib/aciTree/js/jquery.aciTree.editable.js"></script>
+    <script src="~/lib/aciTree/js/jquery.aciTree.sortable.js"></script>
+    <script src="~/lib/datapicker/bootstrap-datepicker.js"></script>
+
+    <script src="~/lib/selection-menu/tether.min.js"></script>
+    <script src="~/lib/selection-menu/selection-menu.js"></script>
+    <script src="~/lib/fullcalendar/fullcalendar.min.js"></script>
+
+
+    <script src="~/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="~/lib/owlSlider/src/js/owl.carousel.js"></script>
+    <script src="~/lib/owlSlider/src/js/owl.autoplay.js"></script>
+    <script src="~/lib/owlSlider/src/js/owl.navigation.js"></script>
+    <script src="~/lib/amcarts/amstockcharts_3.21.3/amcharts/amcharts.js"></script>
+    <script src="~/lib/amcarts/amstockcharts_3.21.3/amcharts/serial.js"></script>
+    <script src="~/lib/amcarts/amstockcharts_3.21.3/amcharts/amstock.js"></script>
+    <script src="~/lib/amcarts/amstockcharts_3.21.3/amcharts/pie.js"></script>
+    <script src="~/lib/amcarts/amstockcharts_3.21.3/amcharts/plugins/export/index.js"></script>
+    <link href="~/lib/amcarts/amstockcharts_3.21.3/amcharts/style.css" rel="stylesheet" />
+    <script src="~/lib/amcarts/amstockcharts_3.21.3/amcharts/themes/light.js"></script>
+    <script src="~/lib/amcarts/amstockcharts_3.21.3/amcharts/lang/ru.js"></script>
+
+
+
+    @RenderSection("scripts", required: false)
+    <!-- InputMask -->
+    <script src="~/lib/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
+
+    <script>
+    
+    </script>
+
+</body>
+</html>
+

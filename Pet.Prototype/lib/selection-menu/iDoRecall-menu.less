@@ -1,0 +1,207 @@
+@backgroundColor: #464646;
+@arrowSize: 16px;
+
+.selection-menu {
+    font: 20px/100% Roboto, sans-serif;
+    // background: @backgroundColor;  // enable if removing the arrows theme
+    color: white;
+    text-transform: uppercase;
+    position: absolute;
+    padding: 0;
+    
+    img {
+        width: 37px;
+    }
+
+    &:hover {
+        color: #B3B3B3;
+    }
+}
+
+.selection-menu ul {
+    list-style-type: none;
+    display: flex;  /* gets rid of the space between inline-block elements: https://css-tricks.com/fighting-the-space-between-inline-block-elements/ */
+    margin: 0;
+    padding: 0;
+}
+
+.selection-menu li {
+    all: unset;  // reset all CSS properties, except in Safari - https://twitter.com/LeaVerou/status/577390241763467264
+
+    cursor: pointer;
+    display: inline-block;
+    margin: 0;
+    padding: .75em 1em;
+    border-left: 3px solid #666666;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+
+    &.shortcut {
+        font-weight: bold;
+    }
+
+    // the logo
+    &:first-child {
+        border: none;
+        padding: 0 .4em;  /* or padding 0 & margin auto .4em but the hover selection is smaller */
+        margin: auto;
+        align-self: center;  /* For IE10; Chrome acts correctly on margin+padding alone */
+    }
+
+    a {
+        display: inline-block;
+    }
+
+    &:hover {
+        background: #3FA9F5;
+        color: white;
+    }
+
+    background: none;  // Safari doesn't do `all: unset` - https://twitter.com/LeaVerou/status/577390241763467264
+}
+
+
+/* don't highlight the image */
+.selection-menu li:first-child:hover {
+    background: transparent;
+}
+
+
+// Taken from the arrows theme, https://github.com/HubSpot/tether/blob/master/src/css/helpers/_tether-theme-arrows.sass. Only uses @backgroundColor
+.tether-smenu-element, .tether-smenu-element:after, .tether-smenu-element:before, .tether-smenu-element *, .tether-smenu-element *:after, .tether-smenu-element *:before {
+    box-sizing: border-box;
+}
+
+.tether-smenu-element {
+
+    > * {
+        position: relative;
+        background: @backgroundColor;
+        -webkit-filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.7));  // subtle 3D
+        filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.7));
+        // TODO box-shadow is more cross-browser: http://thenewcode.com/598/boxshadow-property-vs-dropshadow-filter-a-complete-comparison
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-width: @arrowSize;
+            border-style: solid;
+        }
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-bottom.tether-smenu-element-attached-center > ul {
+    margin-bottom: @arrowSize;
+    &:before {
+        top: 100%;
+        left: 50%;
+        margin-left: -@arrowSize;
+        border-top-color: @backgroundColor;
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-top.tether-smenu-element-attached-center > * {
+    margin-top: @arrowSize;
+    &:before {
+        bottom: 100%;
+        left: 50%;
+        margin-left: -@arrowSize;
+        border-bottom-color: @backgroundColor;
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-right.tether-smenu-element-attached-middle > * {
+    margin-right: @arrowSize;
+    &:before {
+        left: 100%;
+        top: 50%;
+        margin-top: -@arrowSize;
+        border-left-color: @backgroundColor;
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-left.tether-smenu-element-attached-middle > * {
+    margin-left: @arrowSize;
+    &:before {
+        right: 100%;
+        top: 50%;
+        margin-top: -@arrowSize;
+        border-right-color: @backgroundColor;
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-top.tether-smenu-element-attached-left.tether-smenu-target-attached-bottom > * {
+    margin-top: @arrowSize;
+    &:before {
+        bottom: 100%;
+        left: @arrowSize;
+        border-bottom-color: @backgroundColor;
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-top.tether-smenu-element-attached-right.tether-smenu-target-attached-bottom > * {
+    margin-top: @arrowSize;
+    &:before {
+        bottom: 100%;
+        right: @arrowSize;
+        border-bottom-color: @backgroundColor;
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-bottom.tether-smenu-element-attached-left.tether-smenu-target-attached-top > * {
+    margin-bottom: @arrowSize;
+    &:before {
+        top: 100%;
+        left: @arrowSize;
+        border-top-color: @backgroundColor;
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-bottom.tether-smenu-element-attached-right.tether-smenu-target-attached-top > * {
+    margin-bottom: @arrowSize;
+    &:before {
+        top: 100%;
+        right: @arrowSize;
+        border-top-color: @backgroundColor;
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-top.tether-smenu-element-attached-right.tether-smenu-target-attached-left > * {
+    margin-right: @arrowSize;
+    &:before {
+        top: @arrowSize;
+        left: 100%;
+        border-left-color: @backgroundColor;
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-top.tether-smenu-element-attached-left.tether-smenu-target-attached-right > * {
+    margin-left: @arrowSize;
+    &:before {
+        top: @arrowSize;
+        right: 100%;
+        border-right-color: @backgroundColor;
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-bottom.tether-smenu-element-attached-right.tether-smenu-target-attached-left > * {
+    margin-right: @arrowSize;
+    &:before {
+        bottom: @arrowSize;
+        left: 100%;
+        border-left-color: @backgroundColor;
+    }
+}
+
+.tether-smenu-element.tether-smenu-element-attached-bottom.tether-smenu-element-attached-left.tether-smenu-target-attached-right > * {
+    margin-left: @arrowSize;
+    &:before {
+        bottom: @arrowSize;
+        right: 100%;
+        border-right-color: @backgroundColor;
+    }
+}

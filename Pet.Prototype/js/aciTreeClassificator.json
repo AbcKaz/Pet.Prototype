@@ -1,0 +1,82 @@
+﻿[
+  {
+    "id": 1,
+    "label": "Государственное и общественное утройство",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 1,
+    "label": "Труд",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 1,
+    "label": "Социальное обеспечение. Страхование",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 1,
+    "label": "Государственные награды. Ордена, медали, почетные звания, почетная грамота",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 1,
+    "label": "Государственное и общественное утройство",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 1,
+    "label": "Государственное регулирование хозяйственной деятельности",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 1,
+    "label": "Финансы",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 1,
+    "label": "Строительство и архитектура",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 1,
+    "label": "Промышленность",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  },
+  {
+    "id": 1,
+    "label": "Тpанспоpт",
+    "inode": true,
+    "open": true,
+    "checkbox": true,
+    "radio": false
+  }
+]
