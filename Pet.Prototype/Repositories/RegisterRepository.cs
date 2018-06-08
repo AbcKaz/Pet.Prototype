@@ -731,5 +731,10 @@ namespace Pet.Prototype.Repositories
 
             return result;
         }
+
+        public void Test()
+        {
+            return;
+        }
     }
 }
