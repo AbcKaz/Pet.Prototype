@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="076b6e40400a44be99cb58917ad125aa" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="PetEntityModel.Announcements" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetEntityModel.BankAccounts" Width="1.5" PointX="3.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetEntityModel.Companies" Width="1.5" PointX="1.5" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetEntityModel.DicKato" Width="1.5" PointX="1.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetEntityModel.DicRoles" Width="1.5" PointX="3.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetEntityModel.Orders" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetEntityModel.UserPermissions" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetEntityModel.UserRoles" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetEntityModel.Users" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="PetEntityModel.FK_Announcements_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PetEntityModel.FK_Orders_Announcements" ManuallyRouted="false" />
+        <AssociationConnector Association="PetEntityModel.FK_BANKACCO_FK_BANKAC_COMPANIE" ManuallyRouted="false" />
+        <AssociationConnector Association="PetEntityModel.FK_COMPANIE_FK_OBLAST_DICKATO" ManuallyRouted="false" />
+        <AssociationConnector Association="PetEntityModel.FK_COMPANIE_FK_REGION_DICKATO" ManuallyRouted="false" />
+        <AssociationConnector Association="PetEntityModel.FK_USERS_FK_USERS__COMPANIE" ManuallyRouted="false" />
+        <AssociationConnector Association="PetEntityModel.FK_DicKato_DicKato" ManuallyRouted="false" />
+        <AssociationConnector Association="PetEntityModel.FK_DICROLES_FK_DICROL_DICROLES" ManuallyRouted="false" />
+        <AssociationConnector Association="PetEntityModel.FK_USERROLE_FK_USERRO_DICROLES" ManuallyRouted="false" />
+        <AssociationConnector Association="PetEntityModel.FK_Orders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PetEntityModel.FK_UserPermissions_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="PetEntityModel.FK_USERROLE_FK_USERRO_USERS" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

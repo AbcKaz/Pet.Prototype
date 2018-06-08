@@ -1,0 +1,314 @@
+﻿@{
+    ViewBag.Title = "Подача объявления на торги";
+}
+
+<script type="text/javascript" src="~/Scripts/plugins/jqBlockUI/jquery.blockUI.js" charset="utf-8">
+</script>
+<script type="text/javascript" src="~/Scripts/plugins/crypto/crypto_object.js" charset="utf-8">
+</script>
+<script type="text/javascript" src="~/Scripts/plugins/crypto/eds.js" charset="utf-8">
+</script>
+<link href="~/Content/leftmenu.css" rel="stylesheet" />
+
+<style>
+    .form-row {
+        padding: 5px;
+    }
+
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+
+    .btn-blue {
+        width: 130px;
+        background-color: #337ab7;
+    }
+
+        .btn-blue:hover {
+            width: 130px;
+            background-color: #2975b6;
+        }
+</style>
+<div class="main-page">
+    @Html.Partial("LeftMenu")
+    <div class="search-result-container2">
+        <label style="font-weight:bolder;color:#507299;">Подача объявления на торги</label>
+        <div class="panel panel-success" style="width:80%;">
+            <div class="panel-heading" style=" background-color: rgb(0, 51, 102);">
+                Информация о продавце
+            </div>
+            <div class="panel-body">
+
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Наименование организации:</div>
+                    <div class="col-xs-4"><input class="form-control company-name" type="text" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">БИН:</div>
+                    <div class="col-xs-4"><input class="form-control company-bin" type="text" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Контактные данные:</div>
+                    <div class="col-xs-4"><textarea rows="2" class="form-control company-contact"></textarea></div>
+                    <div class="col-xs-2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-success" style="width:80%;">
+            <div class="panel-heading" style=" background-color: rgb(0, 51, 102);">
+                Информация о заявке
+            </div>
+            <div class="panel-body">
+
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Срок проведения торгов:</div>
+                    <div class="col-xs-4">
+                        <div class='input-group date dp-date-bidding' data-date-format="dd/mm/yyyy">
+                            <input type='text' class="form-control inp-bidding" value="20/06/2018" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Стартовая цена:</div>
+                    <div class="col-xs-4"><input class="form-control start-price" type="text" value="150000" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Сумма гарантийного взноса:</div>
+                    <div class="col-xs-4"><input type="text" class="form-control margin" value="1500" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Срок приема заявок:</div>
+                    <div class="col-xs-4">
+                        <div class='input-group date dp-date-deadline' data-date-format="dd/mm/yyyy">
+                            <input type='text' class="form-control inp-deadline" value="20/06/2018" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-success" style="width:80%;">
+            <div class="panel-heading" style=" background-color: rgb(0, 51, 102);">
+                Банковские реквизиты
+            </div>
+            <div class="panel-body">
+
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Наименование банка:</div>
+                    <div class="col-xs-4"><input class="form-control bank-name" type="text" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Расчетный счет (IBAN/ИИК):</div>
+                    <div class="col-xs-4"><input class="form-control bank-iik" type="text" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">БИК:</div>
+                    <div class="col-xs-4"><input type="text" class="form-control bank-bik" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row hide">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">КНП:</div>
+                    <div class="col-xs-4"><input type="text" class="form-control " /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Кбе:</div>
+                    <div class="col-xs-4"><input type="text" class="form-control bank-kbe" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Получатель платежа:</div>
+                    <div class="col-xs-4"><input type="text" class="form-control bank-account-type" value="ПО ПЭТ" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-success" style="width:80%;">
+            <div class="panel-heading" style=" background-color: rgb(0, 51, 102);">
+                Информация о товаре
+            </div>
+            <div class="panel-body">
+
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Наименование товара:</div>
+                    <div class="col-xs-4"><input class="form-control goods-name" type="text" value="сжиженный газ" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Состав:</div>
+                    <div class="col-xs-4"><input class="form-control composition" type="text" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Объем лота:</div>
+                    <div class="col-xs-4"><input type="text" class="form-control lots-size" value="100 тонна" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Количество лотов:</div>
+                    <div class="col-xs-4"><input type="text" class="form-control lots-count" value="3" /></div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Способ поставки:</div>
+                    <div class="col-xs-4">
+                        <input type="checkbox" class="byavto" style="vertical-align:middle;" />Авто &nbsp;&nbsp;
+                        <input type="checkbox" class="bytrain" style="vertical-align:middle;" checked="checked" />ЖД
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Сроки поставки:</div>
+                    <div class="col-xs-4">
+                        <div class='input-group date dp-date-delivery' data-date-format="dd/mm/yyyy">
+                            <input type='text' class="form-control inp-delivery" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Способ оплаты:</div>
+                    <div class="col-xs-4"><select class="form-control select-payment"></select> </div>
+                    <div class="col-xs-2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-success" style="width:80%;">
+            <div class="panel-heading" style=" background-color: rgb(0, 51, 102);">
+                Подтверждающие документы
+            </div>
+            <div class="panel-body">
+
+                <div class="row form-row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">Сертификат качества:</div>
+                    <div class="col-xs-2">
+                        <label>Файл не выбран</label>
+                    </div>
+                    <div class="col-xs-4">
+                        <span class="btn btn-default btn-file">
+                            <i class="fa fa-folder-open-o" aria-hidden="true"></i>  Выберите файл <input type="file" />
+                        </span>
+                    </div>
+                </div>
+                <div class="row form-row">
+                    <div class="col-xs-7"></div>
+                    <div class="col-xs-5">
+                        <button class="btn btn-success btn-blue btn-apply">Подать заявку</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Hidden("hfStoragePath", "")
+@Html.Hidden("hfKeyAlias", "")
+@Html.Hidden("hfXmlToSign", "")
+@Html.Hidden("hfCurrentBin", "")
+@Html.Hidden("signBIN", "")
+@Html.Hidden("Certificate", "")
+@Html.Password("Password", "", new { hidden = "hidden" })
+<div id="dlgPasswordModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Введите ваш пароль
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="wrapper_logon" style="min-height: auto; margin-top: 0px;">
+                    <p>
+                        <label for="passwordCert" class="youpasswd" data-icon="p" style="width: 60px;">
+                            Пароль
+                        </label>
+                        <input id="passwordCert" name="passwordCert" required="required" type="password" placeholder='Введите ваш пароль'>
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnCancel" type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button id="btnAccept" type="button" class="btn btn-primary">Подтвердить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dlgFinishModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>
+                            Ваше объявление на торги успешно отправлены Оператору на подтверждение. Номер Вашего объявления - <span class="doc-no"></span> Для отслеживания статуса Вашего объявления необходимо перейти в раздел Мои торги -> Не объявленные торги
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6"></div>
+                    <div class="col-xs-6">
+                        <div style="float:right;margin-top:15px;">
+                            <button class="btn btn-primary btn-success-sign" style="width:150px;">ок</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/application.js"></script>

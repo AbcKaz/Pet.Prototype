@@ -48,22 +48,26 @@
 </head>
 <body>
     @*@if (ViewBag.Toastr != null)
-    {
-        if (ViewBag.Toastr is IList<ToastrViewModel>)
         {
-            foreach (var toastr in ViewBag.Toasts)
+            if (ViewBag.Toastr is IList<ToastrViewModel>)
             {
-                @Html.Partial("_Toastr", (ToastrViewModel)toastr)
+                foreach (var toastr in ViewBag.Toasts)
+                {
+                    @Html.Partial("_Toastr", (ToastrViewModel)toastr)
+                }
             }
-        }
-        else
-        {
-            @Html.Partial("_Toastr", (ToastrViewModel)ViewBag.Toastr);
-        }
-    }*@
+            else
+            {
+                @Html.Partial("_Toastr", (ToastrViewModel)ViewBag.Toastr);
+            }
+        }*@
 
+    <script>
+
+		var rootUrl = "@Url.Content("~")";
+    </script>
     <div id="wrapper" class="">
-    
+
         @Html.Partial("_TopNavigation")
         <!-- Page wraper -->
         <div id="page-wrapper" class="gray-bg">
@@ -73,7 +77,7 @@
         </div>
     </div>
     @Html.Partial("_Footer")
- 
+
 
     <div class="loader-container">
         <div class="loader-div">
@@ -173,7 +177,7 @@
     <script src="~/lib/jquery.inputmask/dist/jquery.inputmask.bundle.js"></script>
 
     <script>
-    
+
     </script>
 
 </body>

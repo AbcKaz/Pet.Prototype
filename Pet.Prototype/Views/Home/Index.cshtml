@@ -1,33 +1,72 @@
 ﻿@{
     ViewBag.Title = "Главная";
 }
-<div class="main-page"> 
-    <div class="main-left">
-        <div>
-            <a href="#"><img src="/images/rkao-logo.png" style="width: 50%" /></a> <br /><br />
-            @*<a href="#"><img src="/images/kaztransgaz.png" style="width: 100%" /></a> <br /><br />*@
-            Портал электронных торгов
-        </div>
-        <div style="margin-top: 10px; display:none;">
-            <a href="#"><button class="btn btn-zakon btn-success" style="width:100%;">Тест</button></a>
-            <a href="/ru/Account/Login"><button class="btn btn-zakon btn-success" style="width:100%; margin-top: 15px">Войти</button></a>
-            <a href="/ru/Account/Register"><button class="btn btn-zakon btn-success" style="width:100%; margin-top: 15px">Регистрация</button></a>
 
-        </div>
-    </div>
-    <div class="main-content_" style="padding-bottom:15px;">
-        @Html.Partial("_SearchPanel")
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="dashboard-container" style="margin: 0 auto; overflow: hidden;width:100%;">
-                    <div style="overflow:hidden; padding-left: 15px; padding-right: 15px;">
-                        @Html.Partial("_DashboardItem")
-                        @Html.Partial("_DashboardItem")
-                        @Html.Partial("_DashboardItem")
-                        @Html.Partial("_DashboardItem")
+<link href="~/Content/leftmenu.css" rel="stylesheet" />
+
+<div class="main-page">
+    @Html.Partial("LeftMenu")
+    @if (MyExtensions.GetCurrentUserApplicationName() == null)
+    {
+        <div class="main-content_" style="padding-bottom:15px;">
+            @Html.Partial("_SearchPanel")
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="dashboard-container" style="margin: 0 auto; overflow: hidden;width:100%;">
+                        <div style="overflow:hidden; padding-left: 15px; padding-right: 15px;">
+                            @Html.Partial("_DashboardItem")
+                            @Html.Partial("_DashboardItem")
+                            @Html.Partial("_DashboardItem")
+                            @Html.Partial("_DashboardItem")
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="search-result-container2">
+            @Html.Partial("_SearchPanel")
+            @if (MyExtensions.GetRole() == "2")
+            {
+            <div class="panel panel-default" style="width:77%;margin-top:10px;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a href="@Url.Action("Application", "Home")">
+                            <div class="dashboard-item col-sm-3" style="width:43%; padding-left:0px;">
+                                <div class="widget blue-bg_">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-file-text-o fa-4x"></i>
+                                        </div>
+                                        <div class="col-xs-9 text-right">
+                                            <span style="font-size: 13px;"></span>
+                                            <h2 class="font-bold">Подать объявление о торгах</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    }
+
 </div>
+<script>
+    $(function () {
+
+        $('.tree-toggle').click(function () {
+            $(this).parent().children('ul.tree').toggle(200);
+        });
+        $(function () {
+            $('.tree-toggle').parent().children('ul.tree').toggle(200);
+        });
+    })
+</script>
+

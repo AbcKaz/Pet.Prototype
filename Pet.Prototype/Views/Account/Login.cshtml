@@ -1,7 +1,164 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Войти";
 }
 
-<h2>Login</h2>
+<link href="~/Content/login/style.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/login/animate-custom.css" rel="stylesheet" type="text/css" />
 
+<script type="text/javascript" src="~/Scripts/plugins/jqBlockUI/jquery.blockUI.js" charset="utf-8"></script>
+<script type="text/javascript" src="~/Scripts/plugins/crypto/crypto_object.js" charset="utf-8"></script>
+<script type="text/javascript" src="~/Scripts/plugins/crypto/eds_login.js" charset="utf-8"></script>
+<style type="text/css">
+    .ecp-span{
+    padding-left:10px;
+    }
+
+    .after-cert-info{
+    display:none;
+    }
+    .login-card {
+    background-color: #f5f5f5;
+    margin: 15px;
+    }
+
+    .error-message{
+    margin-left:10px;
+    }
+
+    .error-row{
+    display:none;
+    }
+
+    .input-error{
+     border:1px solid red;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+
+        <div class="card login-card" >
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3 class="card-title">Вход на Портал</h3>
+                        <input type="hidden" class="error_password"/>
+                        @Html.Hidden("hfStoragePath", "")
+                        @Html.Hidden("hfKeyAlias", "")
+                        @Html.Hidden("UserName", "")
+                        @Html.Password("Password", "", new { hidden = "hidden" })
+                        @Html.Hidden("hfXmlToSign", "<?xml version=\"1.0\" encoding=\"UTF-8\"?><login><timeTicket>"
+                        + DateTime.Now.ToShortDateString()
+                        + "</timeTicket></login>")
+                        @Html.Hidden("Certificate", "")
+                    </div>
+                   
+             
+
+                </div>
+                <div class="row error-row">
+                    <div class="col-xs-12">
+                            <span class="text-danger error-message"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p style="padding:10px;">
+                            Для того, чтобы осуществить вход на Портале электронных торгов, Вам необходимо нажать кнопку "Выбрать сертификат", указать путь к сертификату аутентификации и ввести пароль.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>
+                            <button class="btn btn-primary" id="btnbtnChooseEds"><i class="fa fa-certificate" aria-hidden="true"></i>  Выбор сертификата</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="row after-cert-info">
+                    <div class="col-xs-12">
+                        <table style="margin:10px;padding:5px;">
+                            <tr>
+                                <td>БИН:</td>
+                                <td><span id="signBIN" class="ecp-span">020540003431</span></td>
+                            </tr>
+                            <tr>
+                                <td>ИИН:</td>
+                                <td><span id="signIIN" class="ecp-span">880305364316</span></td>
+                            </tr>
+                            <tr>
+                                <td>ФИО:</td>
+                                <td><span id="signFIO" class="ecp-span">Петров Сергей Владимирович</span></td>
+                            </tr>
+                            <tr>
+                                <td>Действителен до:</td>
+                                <td><span id="signDateFrom" class="ecp-span">23/12/2019</span> - <span id="signDateTo"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Наименование организации:</td>
+                                <td><span id="signCompanyName" class="ecp-span">ТОО "КазахГаз"</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row after-cert-info">
+                    <div class="col-xs-3">
+                        <label style="padding-left:10px;">Пароль:</label>
+                    </div>
+                    <div class="col-xs-9">
+                        <input class="form-control sign-password" type="password" style="width:145px;margin-left:20px;"/>
+                    </div>
+                </div>
+                <div class="row after-cert-info">
+                    <div class="col-xs-6">
+                        <button class="btn btn-primary btn-md btn-enter" style="margin-top:25px;margin-bottom:25px;"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; Войти</button>
+                            <a href="#" style="text-decoration:underline;padding-left:10px;">Забыли пароль?</a>
+                    </div>
+                    <div class="col-xs-3">
+
+                    </div>
+                    <div class="col-xs-3">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-xs-3"></div>
+</div>
+<div class="col-xs-3"></div>
+
+<div id="dlgPasswordModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    Введите ваш пароль
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="wrapper_logon" style="min-height: auto; margin-top: 0px;">
+                    <p>
+                        <label for="passwordCert" class="youpasswd" data-icon="p" style="width: 70px;">
+                            Пароль
+                        </label>
+                        <input id="passwordCert" name="passwordCert" required="required" type="password" placeholder='Введите ваш пароль' />
+                    </p>
+                    <p class="login button">
+                        <button class="btn btn-primary" id="btnAccept">Подтвердить</button>
+                        <button class="btn btn-primary" id="btnCancel">Отмена</button>
+                        @*<input type="button" id="btnAccept" value="Подтвердить" />
+                            <input type="button" id="btnCancel" value="Отмена" />*@
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/login.js" type="text/javascript"></script>

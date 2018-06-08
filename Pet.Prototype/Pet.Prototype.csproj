@@ -48,6 +48,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GridMvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GridMvc.dll.1.0.4\lib\net45\GridMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="KalkanCryptNET, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\aisger\aisger - v7\libs\KalkanCryptNET.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -55,6 +69,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -113,6 +129,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WebGridMvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGridMvc.1.0.0\lib\net40\WebGridMvc.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -149,11 +168,69 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Announcements.cs">
+      <DependentUpon>PetEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AnnouncementViewModel.cs" />
+    <Compile Include="Models\BankAccounts.cs">
+      <DependentUpon>PetEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankViewModel.cs" />
+    <Compile Include="Models\Companies.cs">
+      <DependentUpon>PetEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CompanyViewModel.cs" />
+    <Compile Include="Models\DicKato.cs">
+      <DependentUpon>PetEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DicRoles.cs">
+      <DependentUpon>PetEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemResponse.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\Orders.cs">
+      <DependentUpon>PetEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\PetEntityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PetEntityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PetEntityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PetEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PetEntityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PetEntityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserPermissions.cs">
+      <DependentUpon>PetEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserRoles.cs">
+      <DependentUpon>PetEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users.cs">
+      <DependentUpon>PetEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserViewModel.cs" />
+    <Compile Include="MyExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\RegisterRepository.cs" />
+    <Compile Include="Utilis\CodeConstManager.cs" />
+    <Compile Include="Utilis\SerializeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\gridmvc.datepicker.css" />
+    <Content Include="Content\gridmvc.datepicker.min.css" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="Content\leftmenu.css" />
     <Content Include="Content\login\animate-custom.css" />
     <Content Include="Content\login\demo.css" />
     <Content Include="Content\login\fonts\BebasNeue-webfont.svg" />
@@ -454,6 +531,15 @@
     <Content Include="images\expired_ru.png" />
     <Content Include="images\favorite.png" />
     <Content Include="images\fullscreen.png" />
+    <Content Include="images\gaz\gaz.png" />
+    <Content Include="images\gaz\gaz2.png" />
+    <Content Include="images\gaz\gaz3.png" />
+    <Content Include="images\gaz\gaz4.png" />
+    <Content Include="images\gaz\gaz5.png" />
+    <Content Include="images\gaz\gaz6.png" />
+    <Content Include="images\gaz\gaz7.png" />
+    <Content Include="images\gaz\gaz8.png" />
+    <Content Include="images\gaz\gaz9.png" />
     <Content Include="images\Google-Translate-icon.png" />
     <Content Include="images\hex-loader.gif" />
     <Content Include="images\history.png" />
@@ -2182,6 +2268,20 @@
     <Content Include="lib\x-editable\dist\jqueryui-editable\img\loading.gif" />
     <Content Include="lib\x-editable\dist\jqueryui-editable\js\jqueryui-editable.js" />
     <Content Include="lib\x-editable\dist\jqueryui-editable\js\jqueryui-editable.min.js" />
+    <Content Include="Models\PetEntityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PetEntityModel.edmx</DependentUpon>
+      <LastGenOutput>PetEntityModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PetEntityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PetEntityModel.edmx</DependentUpon>
+      <LastGenOutput>PetEntityModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\application.js" />
+    <Content Include="Scripts\applicationview.js" />
+    <Content Include="Scripts\applytoannouncement.js" />
+    <Content Include="Scripts\applytoannouncementview.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -2620,6 +2720,22 @@
     <Content Include="Content\login\fonts\franchise-bold-webfont.eot" />
     <Content Include="Content\login\fonts\franchise-bold-webfont.ttf" />
     <Content Include="Content\login\fonts\franchise-bold-webfont.woff" />
+    <EntityDeploy Include="Models\PetEntityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PetEntityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PetEntityModel.edmx.diagram">
+      <DependentUpon>PetEntityModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <Content Include="Scripts\employee.js" />
+    <Content Include="Scripts\gridmvc.customwidgets.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.fr.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
+    <Content Include="Scripts\gridmvc.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -2628,9 +2744,12 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\login.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\plugins\crypto\crypto_object.js" />
     <Content Include="Scripts\plugins\crypto\eds.js" />
+    <Content Include="Scripts\plugins\crypto\eds_login.js" />
+    <Content Include="Scripts\plugins\crypto\eds_reg.js" />
     <Content Include="Scripts\plugins\crypto\main.js" />
     <Content Include="Scripts\plugins\jqBlockUI\jquery.blockUI.js" />
     <Content Include="Scripts\plugins\jqBlockUI\jquery.blockUI.min.js" />
@@ -2647,8 +2766,10 @@
     <Content Include="Scripts\plugins\jqFileUpload\js\jquery.fileupload-validate.js" />
     <Content Include="Scripts\plugins\jqFileUpload\js\jquery.fileupload-video.js" />
     <Content Include="Scripts\plugins\jqFileUpload\js\jquery.fileupload.js" />
+    <Content Include="Scripts\registration.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\webGrid.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2672,10 +2793,22 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register2.cshtml" />
+    <Content Include="Views\Home\LeftMenu.cshtml" />
+    <Content Include="Views\Home\Employees.cshtml" />
+    <Content Include="Views\Home\Cabinet.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Shared\_AjaxGridPager.cshtml" />
+    <Content Include="Views\Home\Application.cshtml" />
+    <Content Include="Views\Home\Announcements.cshtml" />
+    <Content Include="Views\Home\AnnouncementsView.cshtml" />
+    <Content Include="Views\Home\AllAnnouncements.cshtml" />
+    <Content Include="Views\Home\ApplyToAnnouncement.cshtml" />
+    <Content Include="Views\Home\ApplyToAnnouncementView.cshtml" />
+    <Content Include="Views\Home\Orders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -2695,6 +2828,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

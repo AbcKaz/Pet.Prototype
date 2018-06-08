@@ -14,7 +14,7 @@
             <li>
                 <div>
                     <div class="top-menu-list btn-group">
-                        <a class="btn btn-outline btn-active dim btn-main" style="" href="/"><i class="fa fa-home"></i> <div>Главная</div></a>
+                        <a class="btn btn-outline btn-active dim btn-main" style="" href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> <div>Главная</div></a>
                         <div style="float:left">
                             <a data-toggle="dropdown" class="btn btn-outline dim btn-main" href="#"><i class="fa fa-language"></i><div>Информация</div></a>
                             <div class="dropdown-menu dropdown-submenu">
@@ -87,9 +87,17 @@
             }*@
             <li class="navbar-right">
                 <div >
-                    <ul  class="lang-div">
-                        <li class="dropdown-submenu-item"><a href="@Url.Action("Register2","Account")"><i class="fa fa-user"></i> Зарегистрироваться | </a></li>
-                        <li class="dropdown-submenu-item"><a href="@Url.Action("Login","Account")"><i class="fa fa-unlock-alt"></i> Войти</a></li>
+                    <ul class="lang-div">
+                        @if (MyExtensions.GetCurrentUserApplicationName() == null)
+                        {
+                            <li class="dropdown-submenu-item"><a href="@Url.Action("Register2", "Account")"><i class="fa fa-user"></i> Зарегистрироваться | </a></li>
+                            <li class="dropdown-submenu-item"><a href="@Url.Action("Login", "Account")"><i class="fa fa-lock-alt"></i> Войти</a></li>
+                        }
+                        else
+                        {
+                            <li class="dropdown-submenu-item"><a href="#"><i class="fa fa-user"></i> @MyExtensions.GetCurrentUserApplicationName() | </a></li>
+                            <li class="dropdown-submenu-item"><a href="@Url.Action("LogOff", "Account")"><i class="fa fa-unlock-alt"></i> Выход</a></li>
+                        }
                     </ul>
                 </div>
             </li>          

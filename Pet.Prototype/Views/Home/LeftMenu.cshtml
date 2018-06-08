@@ -1,0 +1,92 @@
+﻿@if (MyExtensions.GetCurrentUserApplicationName() == null)
+{
+    <div class="main-left">
+        <div style="font-size:25px;">
+            <a href="#"><img src="~/images/gaz/gaz6.png" style="width: 50%" /></a> <br /><br />
+            @*<a href="#"><img src="/images/rkao-logo.png" style="width: 50%" /></a> <br /><br />*@
+            Портал электронных торгов
+        </div>
+        </div>
+}
+else
+{
+    <div class="main-left-menu">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well no-padding">
+                    <div>
+                        <ul class="nav nav-list nav-menu-list-style">
+                            <li>
+                                <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                    <span class="glyphicon glyphicon-file m5"></span>Личный кабинет
+                                    <span class="menu-collapsible-icon glyphicon glyphicon-chevron-down"></span>
+                                </label>
+                                <ul class="nav nav-list tree bullets">
+                                    <li class="left-menu-li"><a href="#">Персональные данные</a></li>
+                                    <li class="left-menu-li"><a href="#">Данные организации <span class="badge">42</span></a></li>
+                                    <li class="left-menu-li"><a href="@Url.Action("Employees", "Home")">Сотрудники организации</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                    <span class="glyphicon glyphicon-file m5"></span><a href="@Url.Action("AllAnnouncements", "Home")" style="border: 0px;color: #507299;padding: 0px;">Все торги</a> 
+                                </label>
+                            </li>
+                            <li>
+                                <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                    <span class="glyphicon glyphicon-file m5"></span>Мои торги
+                                    <span class="menu-collapsible-icon glyphicon glyphicon-chevron-down"></span>
+                                </label>
+                                <ul class="nav nav-list tree">
+                                    <li class="left-menu-li"><a href="@Url.Action("Announcements", "Home",new { status=1})">На подтверждении</a></li>
+                                    <li class="left-menu-li"><a href="@Url.Action("Announcements", "Home",new { status=2})">Объявленные торги</a></li>
+                                    <li class="left-menu-li"><a href="#">Состоявшиеся торги</a></li>
+                                    <li class="left-menu-li"><a href="#">Не состоявшиеся торги</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                    <span class="glyphicon glyphicon-file m5"></span>Аукционный зал
+                                </label>
+                            </li>
+                            <li>
+                                <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                    <span class="glyphicon glyphicon-file m5"></span>Мои заявки
+                                    <span class="menu-collapsible-icon glyphicon glyphicon-chevron-down"></span>
+                                </label>
+                                <ul class="nav nav-list tree bullets">
+                                    <li class="left-menu-li"><a href="@Url.Action("Orders", "Home",new { status=1})">На рассмотрении <span class="badge">3</span></a></li>
+                                    <li class="left-menu-li"><a href="@Url.Action("Orders", "Home",new { status=2})">Принятые заявки<span class="badge">2</span></a></li>
+                                    <li class="left-menu-li"><a href="@Url.Action("Orders", "Home",new { status=3})">Отклоненные заявки<span class="badge">2</span></a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                    <span class="glyphicon glyphicon-file m5"></span>Протоколы
+                                </label>
+                            </li>
+                            <li>
+                                <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                    <span class="glyphicon glyphicon-file m5"></span>Заявления на возврат
+                                </label>
+                            </li>
+                            <li>
+                                <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                    <span class="glyphicon glyphicon-file m5"></span>Платежи
+                                    <span class="menu-collapsible-icon glyphicon glyphicon-chevron-down"></span>
+                                </label>
+                                <ul class="nav nav-list tree bullets">
+                                    <li class="left-menu-li"><a href="#">Гарантийный взнос<span class="badge">3</span></a></li>
+                                    <li class="left-menu-li"><a href="#">Возвраты<span class="badge">2</span></a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+

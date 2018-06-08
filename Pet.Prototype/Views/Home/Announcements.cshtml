@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Announcements";
+}
+
+@using GridMvc.Html
+@using Pet.Prototype.Models;
+@model IEnumerable<AnnouncementViewModel>
+<link href="~/Content/Gridmvc.css" rel="stylesheet" />
+<link href="~/Content/leftmenu.css" rel="stylesheet" />
+<script src="~/Scripts/gridmvc.js"></script>
+<script src="~/Scripts/gridmvc.min.js"></script>
+<style>
+    .emp-search-table {
+        width: 100%;
+    }
+
+        .emp-search-table > tr {
+            padding: 10px;
+        }
+
+        .emp-search-table td {
+            padding: 5px;
+        }
+
+    .emp-button {
+        width: 130px;
+        background-color: #337ab7;
+    }
+
+        .emp-button:hover {
+            width: 130px;
+            background-color: #2975b6;
+        }
+
+    .edit-row {
+        padding-top: 5px;
+    }
+</style>
+@helper CheckboxView(AnnouncementViewModel item)
+{
+    <div>
+        <input type="checkbox" obj-id="@item.Id" uid="@item.SellerId"/>
+    </div>
+}
+
+<div class="main-page">
+    @Html.Partial("LeftMenu")
+    <div class="search-result-container2">
+        <div class="panel panel-default" style="width:77%;">
+            <div class="panel-heading">
+                Объявления на подтверждении
+            </div>
+            <div class="panel-body">
+                <table class="emp-search-table">
+                    <tr>
+                        <td>Торги №:</td>
+                        <td><input class="form-control" /></td>
+                        <td>Объем лота:</td>
+                        <td><input class="form-control" /></td>
+                       
+                    </tr>
+                    <tr>
+                        <td>Срок проведения торгов:</td>
+                        <td><input class="form-control" /></td>
+                        <td>Стартовая цена:</td>
+                        <td><input class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <div style="float:right;">
+                                <button class="btn btn-primary emp-button"><i class="fa fa-search"></i>    Найти</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    @Html.Grid(Model).Columns(columns =>
+               {
+                   columns.Add().Encoded(false).Sanitized(false).Titled("").SetWidth(20).RenderValueAs(o => CheckboxView(o).ToHtmlString());
+                   columns.Add(c => c.No).Titled("№").Filterable(true);
+                   columns.Add(c => c.DateBidding).Titled("Срок проведения торгов").Filterable(true);
+                   columns.Add(c => c.Composition).Titled("Состав").Filterable(true);
+                   columns.Add(c => c.StartPrice).Titled("Стартовая цена").Filterable(true);
+                   columns.Add(c => c.Margin).Titled("Сумма гарант.взноса").Filterable(true);
+                   columns.Add(c => c.LotSize).Titled("Объем лота").Filterable(true);
+                   columns.Add(c => c.DeadlineDate).Titled("Срок приема заявок").Filterable(true);
+                   columns.Add(c => c.StatusName).Titled("Статус").Filterable(true);
+                   //columns.Add()
+                   //.Encoded(false)
+                   //.Sanitized(false)
+                   //.SetWidth(30)
+                   //.RenderValueAs(o => Html.ActionLink("Edit", "Edit", new { id = o.Id }));
+
+               }).WithPaging(10).Sortable(true)
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div style="float:right;margin-top:20px;">
+                            <button class="btn btn-success emp-button btn-view"><i class="fa fa-eye"></i>  Просмотр</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+
+        $('.btn-view').click(function () {
+
+            var trs = $('.grid-mvc').find('table.grid-table').find('tr.grid-row-selected');
+            if (trs.length != 0) {
+               
+                var id = $(trs[0]).find('input[type=checkbox]').attr('obj-id');
+                var uid = $(trs[0]).find('input[type=checkbox]').attr('uid');
+                console.log("id=", id);
+                console.log("uid=", uid);
+
+                window.location = rootUrl + "Home/AnnouncementsView?uid=" + uid + "&aid=" + id;
+            }
+
+        });
+    })
+</script>

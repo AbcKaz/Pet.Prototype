@@ -1,0 +1,267 @@
+﻿
+@{
+    ViewBag.Title = "Персональные данные";
+}
+<link href="~/Content/leftmenu.css" rel="stylesheet" />
+<div class="search-panel" style="background: #507299; overflow:hidden; padding-left:0px;margin: 0px; margin-bottom: 10px; ">
+    <div class="search-panel-logo col-sm-1">
+        <a href="/">
+            <img src="~/images/gaz/gaz6.png" class="logo" style="">
+            <div style="color: white; text-align: center">Базы данных "Закон"</div>
+        </a>
+    </div>
+    <div class="col-sm-9" style="color: white; padding-top: 29px; padding-left: 25px;">
+        <h4>Получить консультацию</h4>
+        <ol class="breadcrumb">
+            <li>
+                <a>Консультация</a>
+            </li>
+            <li class="active">
+                <strong>Получить консультацию</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="filter-container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well no-padding">
+                <div>
+                    <ul class="nav nav-list nav-menu-list-style">
+                        <li>
+                            <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                <span class="glyphicon glyphicon-file m5"></span>Личный кабинет
+                                <span class="menu-collapsible-icon glyphicon glyphicon-chevron-down"></span>
+                            </label>
+                            <ul class="nav nav-list tree bullets">
+                                <li class="left-menu-li"><a href="@Url.Action("Cabinet", "Home")">Персональные данные</a></li>
+                                <li class="left-menu-li"><a href="#">Данные организации <span class="badge">42</span></a></li>
+                                <li class="left-menu-li"><a href="@Url.Action("Employees", "Home")">Сотрудники организации</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                <span class="glyphicon glyphicon-file m5"></span>Все торги
+                            </label>
+                        </li>
+                        <li>
+                            <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                <span class="glyphicon glyphicon-file m5"></span>Мои торги
+                                <span class="menu-collapsible-icon glyphicon glyphicon-chevron-down"></span>
+                            </label>
+                            <ul class="nav nav-list tree">
+                                <li class="left-menu-li"><a href="#">Состоявшиеся торги</a></li>
+                                <li class="left-menu-li"><a href="#">Не состоявшиеся торги</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                <span class="glyphicon glyphicon-file m5"></span>Аукционный зал
+                            </label>
+                        </li>
+                        <li>
+                            <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                <span class="glyphicon glyphicon-file m5"></span>Мои заявки
+                                <span class="menu-collapsible-icon glyphicon glyphicon-chevron-down"></span>
+                            </label>
+                            <ul class="nav nav-list tree bullets">
+                                <li class="left-menu-li"><a href="#">Принятые заявки <span class="badge">3</span></a></li>
+                                <li class="left-menu-li"><a href="#">Отклоненные заявки <span class="badge">2</span></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                <span class="glyphicon glyphicon-file m5"></span>Протоколы
+                            </label>
+                        </li>
+                        <li>
+                            <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                <span class="glyphicon glyphicon-file m5"></span>Заявления на возврат
+                            </label>
+                        </li>
+                        <li>
+                            <label class="tree-toggle nav-header glyphicon-icon-rpad left-menu-label">
+                                <span class="glyphicon glyphicon-file m5"></span>Платежи
+                                <span class="menu-collapsible-icon glyphicon glyphicon-chevron-down"></span>
+                            </label>
+                            <ul class="nav nav-list tree bullets">
+                                <li class="left-menu-li"><a href="#">Гарантийный взнос<span class="badge">3</span></a></li>
+                                <li class="left-menu-li"><a href="#">Возвраты<span class="badge">2</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search-result-container">
+    <a href="/ru/Consulting/Add" class="btn btn-warning authorized"><i class="fa fa-comments"></i> Получить консультацию</a>
+    <br><br>
+    <input type="hidden" value="BD8.Common.ViewModels.Consulting.SearchViewModel">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th width="3%">№</th>
+                <th width="67%">Вопросы</th>
+                <th width="10%">Дата создания</th>
+                <th width="10%">Автор</th>
+                <th width="10%">Имеется ответ?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>6</td>
+                <td>
+                    <span style="font-size: 20px; color: #87A0BC;"><i class="fa fa-question-circle"></i> </span>
+                    <a href="/ru/Consulting/Detail?id=5a3843c5-e726-470a-a521-4dba5e5b9d8b">Вопросы в сфере туризма и спорта</a><br>
+                    <p>как получить спортивный разряд?</p>
+                </td>
+                <td>03.04.2018</td>
+                <td>Асылбек</td>
+                <!--<td>&#x414;&#x44E;&#x441;&#x435;&#x43A;&#x435;&#x43D;&#x43E;&#x432; &#x410;&#x441;&#x44B;&#x43B;&#x431;&#x435;&#x43A;</td>-->
+                <td>
+                    <i class="fa fa-check-circle-o" style="font-size: 20px; color: #87A0BC;"></i>
+
+                </td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>
+                    <span style="font-size: 20px; color: #87A0BC;"><i class="fa fa-question-circle"></i> </span>
+                    <a href="/ru/Consulting/Detail?id=e407681c-41f8-4343-8830-f0956b16122d">Вопросы местных исполнительных органов</a><br>
+                    <p>Если НПА опубликован в эталонном банке, обязательна ли его публикация в печатных СМИ ?<br></p>
+                </td>
+                <td>22.05.2018</td>
+                <td>Алма</td>
+                <!--<td>&#x418;&#x441;&#x43C;&#x430;&#x433;&#x443;&#x43B;&#x43E;&#x432;&#x430; &#x410;&#x43B;&#x43C;&#x430;</td>-->
+                <td>
+                    <i class="fa fa-check-circle-o" style="font-size: 20px; color: #87A0BC;"></i>
+
+                </td>
+            </tr>
+            <tr>
+                <td>44</td>
+                <td>
+                    <span style="font-size: 20px; color: #87A0BC;"><i class="fa fa-question-circle"></i> </span>
+                    <a href="/ru/Consulting/Detail?id=1c8a6aab-660e-43fe-a405-7f634eb6f24d">Регистрация юридических лиц</a><br>
+                    <p><span style="line-height: 107%;">Какой размер налога на имущество для ИП?</span></p>
+                </td>
+                <td>28.05.2018</td>
+                <td>Алмагуль</td>
+                <!--<td> &#x410;&#x43B;&#x43C;&#x430;&#x433;&#x443;&#x43B;&#x44C;</td>-->
+                <td>
+                    <i class="fa fa-check-circle-o" style="font-size: 20px; color: #87A0BC;"></i>
+
+                </td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>
+                    <span style="font-size: 20px; color: #87A0BC;"><i class="fa fa-question-circle"></i> </span>
+                    <a href="/ru/Consulting/Detail?id=cf4e8f42-1960-4275-b280-c91cfc32ea33">Вопросы в сфере здравоохранения</a><br>
+                    Обязательно ли проходить медосмотр при поступлении в ВУЗ?
+                </td>
+                <td>23.02.2018</td>
+                <td>Алмагуль</td>
+                <!--<td> &#x410;&#x43B;&#x43C;&#x430;&#x433;&#x443;&#x43B;&#x44C;</td>-->
+                <td>
+                    <i class="fa fa-check-circle-o" style="font-size: 20px; color: #87A0BC;"></i>
+
+                </td>
+            </tr>
+            <tr>
+                <td>39</td>
+                <td>
+                    <span style="font-size: 20px; color: #87A0BC;"><i class="fa fa-question-circle"></i> </span>
+                    <a href="/ru/Consulting/Detail?id=a85753e2-442c-4d46-ab96-4e6baea7e0ce">Вопросы брачно-семейных правоотношений</a><br>
+                    <ul><li>Какой размер налога на наследство? <br></li></ul>
+                </td>
+                <td>28.05.2018</td>
+                <td>Асель</td>
+                <!--<td>&#x410;&#x441;&#x435;&#x43B;&#x44F; &#x410;&#x441;&#x435;&#x43B;&#x44C;</td>-->
+                <td>
+                    <i class="fa fa-check-circle-o" style="font-size: 20px; color: #87A0BC;"></i>
+
+                </td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>
+                    <span style="font-size: 20px; color: #87A0BC;"><i class="fa fa-question-circle"></i> </span>
+                    <a href="/ru/Consulting/Detail?id=3c5e88b2-a6cf-4241-8db0-5c28be021047">Вопросы в сфере недвижимости </a><br>
+                    Как зарегистрировать имущественные права на недвижимость?
+                </td>
+                <td>27.04.2018</td>
+                <td>Лейла</td>
+                <!--<td>&#x41C;&#x430;&#x434;&#x435;&#x43D;&#x43E;&#x432;&#x430; &#x41B;&#x435;&#x439;&#x43B;&#x430;</td>-->
+                <td>
+                    <i class="fa fa-check-circle-o" style="font-size: 20px; color: #87A0BC;"></i>
+
+                </td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>
+                    <span style="font-size: 20px; color: #87A0BC;"><i class="fa fa-question-circle"></i> </span>
+                    <a href="/ru/Consulting/Detail?id=34890873-6f86-4f0c-95f6-5dda804cd68d">Вопросы документирования и регистрации населения</a><br>
+                    Минимальный срок оформления паспорта?
+                </td>
+                <td>06.04.2018</td>
+                <td>Лейла</td>
+                <!--<td>&#x41C;&#x430;&#x434;&#x435;&#x43D;&#x43E;&#x432;&#x430; &#x41B;&#x435;&#x439;&#x43B;&#x430;</td>-->
+                <td>
+                    <i class="fa fa-check-circle-o" style="font-size: 20px; color: #87A0BC;"></i>
+
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>
+                    <span style="font-size: 20px; color: #87A0BC;"><i class="fa fa-question-circle"></i> </span>
+                    <a href="/ru/Consulting/Detail?id=03ab6343-d84a-4e45-8642-3a97f06f2e55">Вопросы документирования и регистрации населения</a><br>
+                    <p>Стоимость и сроки выдачи ПАСПОРТА!!!!! Все данные - срочные и нет.&nbsp;Не у/л!!!!!&nbsp;&nbsp;</p>
+                </td>
+                <td>02.05.2018</td>
+                <td>Irina</td>
+                <!--<td> Irina</td>-->
+                <td>
+                    <i class="fa fa-check-circle-o" style="font-size: 20px; color: #87A0BC;"></i>
+
+                </td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>
+                    <span style="font-size: 20px; color: #87A0BC;"><i class="fa fa-question-circle"></i> </span>
+                    <a href="/ru/Consulting/Detail?id=3c722583-361b-4d8b-a0b1-92317c03cc51">Вопросы брачно-семейных правоотношений</a><br>
+                    <p>Как правильно написать заявление на алименты для содержания детей? Какие документы нужны?</p>
+                </td>
+                <td>09.04.2018</td>
+                <td>Irina</td>
+                <!--<td> Irina</td>-->
+                <td>
+                    <i class="fa fa-check-circle-o" style="font-size: 20px; color: #87A0BC;"></i>
+
+                </td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>
+                    <span style="font-size: 20px; color: #87A0BC;"><i class="fa fa-question-circle"></i> </span>
+                    <a href="/ru/Consulting/Detail?id=ef981c98-6ab1-4b35-83e4-c0c9caeef1c8">Правила дорожного движения</a><br>
+                    <p>Добрый день. Подскажите, пожалуйста, имеющийся автомобиль в настоящее время находится в залоге в банке. Имеется ли возможность получить новые регистрационные номера на автомобиль? или же до снятия с залога такой возможности у меня нет. спасибо.</p>
+                </td>
+                <td>17.05.2018</td>
+                <td>Данияр</td>
+                <!--<td>&#x428;&#x443;&#x442;&#x430;&#x43D;&#x43E;&#x432; &#x414;&#x430;&#x43D;&#x438;&#x44F;&#x440;</td>-->
+                <td>
+                    <i class="fa fa-check-circle-o" style="font-size: 20px; color: #87A0BC;"></i>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

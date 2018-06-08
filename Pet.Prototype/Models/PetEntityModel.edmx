@@ -1,0 +1,883 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище PetEntityModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Announcements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateCreate" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdate" Type="datetime" />
+          <Property Name="SellerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateBidding" Type="date" />
+          <Property Name="StartPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Margin" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DeadlineDate" Type="date" />
+          <Property Name="GoodsName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Composition" Type="nvarchar" MaxLength="250" />
+          <Property Name="LotSize" Type="nvarchar" MaxLength="100" />
+          <Property Name="LotCount" Type="int" />
+          <Property Name="TypeDelivery" Type="int" />
+          <Property Name="DateDelivery" Type="date" />
+          <Property Name="PaymentType" Type="nvarchar" MaxLength="250" />
+          <Property Name="Status" Type="int" />
+          <Property Name="XmlSign" Type="xml" />
+          <Property Name="XmlSign2" Type="nvarchar(max)" />
+          <Property Name="No" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BankAccounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="uniqueidentifier" />
+          <Property Name="UpdateUserId" Type="uniqueidentifier" />
+          <Property Name="CompanyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="BIK" Type="nvarchar" MaxLength="250" />
+          <Property Name="IIK" Type="nvarchar" MaxLength="250" />
+          <Property Name="Kbe" Type="int" />
+          <Property Name="AccountType" Type="nvarchar" MaxLength="250" />
+          <Property Name="OpenDate" Type="date" />
+          <Property Name="CloseDate" Type="date" />
+          <Property Name="AccountCurrency" Type="nvarchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CreateUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UpdateUserId" Type="uniqueidentifier" />
+          <Property Name="JuridicalName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="BIN" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CompanyHeadName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Oblast" Type="int" />
+          <Property Name="Region" Type="int" />
+          <Property Name="JuridicalAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="FactAddress" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="DicKato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="NameKz" Type="nvarchar" MaxLength="250" />
+          <Property Name="NameRu" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="DicRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="100" />
+          <Property Name="NameKz" Type="nvarchar" MaxLength="250" />
+          <Property Name="NameRu" Type="nvarchar" MaxLength="250" />
+          <Property Name="ParentId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="AnnouncementId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BuyerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BankAccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BankWarranty" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="XmlSign" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserPermissions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Permissions" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="250" />
+          <Property Name="IIN" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MobilePhone" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="ExtraPhone" Type="nvarchar" MaxLength="250" />
+          <Property Name="WorkPhone" Type="nvarchar" MaxLength="250" />
+          <Property Name="UserPosition" Type="nvarchar" MaxLength="100" />
+          <Property Name="CompanyId" Type="uniqueidentifier" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsHeadCompany" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Announcements_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Announcements" Type="Self.Announcements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Announcements">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BANKACCO_FK_BANKAC_COMPANIE">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="BankAccounts" Type="Self.BankAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankAccounts">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANIE_FK_OBLAST_DICKATO">
+          <End Role="DicKato" Type="Self.DicKato" Multiplicity="0..1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DicKato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="Oblast" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANIE_FK_REGION_DICKATO">
+          <End Role="DicKato" Type="Self.DicKato" Multiplicity="0..1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DicKato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="Region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DicKato_DicKato">
+          <End Role="DicKato" Type="Self.DicKato" Multiplicity="1" />
+          <End Role="DicKato1" Type="Self.DicKato" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="DicKato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DicKato1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DICROLES_FK_DICROL_DICROLES">
+          <End Role="DicRoles" Type="Self.DicRoles" Multiplicity="0..1" />
+          <End Role="DicRoles1" Type="Self.DicRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DicRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DicRoles1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Announcements">
+          <End Role="Announcements" Type="Self.Announcements" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Announcements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="AnnouncementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermissions_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserPermissions" Type="Self.UserPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermissions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERROLE_FK_USERRO_DICROLES">
+          <End Role="DicRoles" Type="Self.DicRoles" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DicRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERROLE_FK_USERRO_USERS">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERS_FK_USERS__COMPANIE">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PetEntityModelContainer">
+          <EntitySet Name="Announcements" EntityType="Self.Announcements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BankAccounts" EntityType="Self.BankAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DicKato" EntityType="Self.DicKato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DicRoles" EntityType="Self.DicRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPermissions" EntityType="Self.UserPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Announcements_Users" Association="Self.FK_Announcements_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Announcements" EntitySet="Announcements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BANKACCO_FK_BANKAC_COMPANIE" Association="Self.FK_BANKACCO_FK_BANKAC_COMPANIE">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="BankAccounts" EntitySet="BankAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANIE_FK_OBLAST_DICKATO" Association="Self.FK_COMPANIE_FK_OBLAST_DICKATO">
+            <End Role="DicKato" EntitySet="DicKato" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANIE_FK_REGION_DICKATO" Association="Self.FK_COMPANIE_FK_REGION_DICKATO">
+            <End Role="DicKato" EntitySet="DicKato" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DicKato_DicKato" Association="Self.FK_DicKato_DicKato">
+            <End Role="DicKato" EntitySet="DicKato" />
+            <End Role="DicKato1" EntitySet="DicKato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DICROLES_FK_DICROL_DICROLES" Association="Self.FK_DICROLES_FK_DICROL_DICROLES">
+            <End Role="DicRoles" EntitySet="DicRoles" />
+            <End Role="DicRoles1" EntitySet="DicRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Announcements" Association="Self.FK_Orders_Announcements">
+            <End Role="Announcements" EntitySet="Announcements" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Users" Association="Self.FK_Orders_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermissions_Users" Association="Self.FK_UserPermissions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPermissions" EntitySet="UserPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERROLE_FK_USERRO_DICROLES" Association="Self.FK_USERROLE_FK_USERRO_DICROLES">
+            <End Role="DicRoles" EntitySet="DicRoles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERROLE_FK_USERRO_USERS" Association="Self.FK_USERROLE_FK_USERRO_USERS">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERS_FK_USERS__COMPANIE" Association="Self.FK_USERS_FK_USERS__COMPANIE">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PetEntityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Announcements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+          <Property Name="SellerId" Type="Guid" Nullable="false" />
+          <Property Name="DateBidding" Type="DateTime" Precision="0" />
+          <Property Name="StartPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Margin" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DeadlineDate" Type="DateTime" Precision="0" />
+          <Property Name="GoodsName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Composition" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="LotSize" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LotCount" Type="Int32" />
+          <Property Name="TypeDelivery" Type="Int32" />
+          <Property Name="DateDelivery" Type="DateTime" Precision="0" />
+          <Property Name="PaymentType" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="XmlSign" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="XmlSign2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="No" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Announcements_Users" FromRole="Announcements" ToRole="Users" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Announcements" FromRole="Announcements" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="BankAccounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Guid" />
+          <Property Name="UpdateUserId" Type="Guid" />
+          <Property Name="CompanyId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BIK" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IIK" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Kbe" Type="Int32" />
+          <Property Name="AccountType" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="OpenDate" Type="DateTime" Precision="0" />
+          <Property Name="CloseDate" Type="DateTime" Precision="0" />
+          <Property Name="AccountCurrency" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_BANKACCO_FK_BANKAC_COMPANIE" FromRole="BankAccounts" ToRole="Companies" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserId" Type="Guid" Nullable="false" />
+          <Property Name="UpdateUserId" Type="Guid" />
+          <Property Name="JuridicalName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BIN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyHeadName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Oblast" Type="Int32" />
+          <Property Name="Region" Type="Int32" />
+          <Property Name="JuridicalAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FactAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BankAccounts" Relationship="Self.FK_BANKACCO_FK_BANKAC_COMPANIE" FromRole="Companies" ToRole="BankAccounts" />
+          <NavigationProperty Name="DicKato" Relationship="Self.FK_COMPANIE_FK_OBLAST_DICKATO" FromRole="Companies" ToRole="DicKato" />
+          <NavigationProperty Name="DicKato1" Relationship="Self.FK_COMPANIE_FK_REGION_DICKATO" FromRole="Companies" ToRole="DicKato" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_USERS_FK_USERS__COMPANIE" FromRole="Companies" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="DicKato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="NameKz" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NameRu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_COMPANIE_FK_OBLAST_DICKATO" FromRole="DicKato" ToRole="Companies" />
+          <NavigationProperty Name="Companies1" Relationship="Self.FK_COMPANIE_FK_REGION_DICKATO" FromRole="DicKato" ToRole="Companies" />
+          <NavigationProperty Name="DicKato1" Relationship="Self.FK_DicKato_DicKato" FromRole="DicKato" ToRole="DicKato1" />
+          <NavigationProperty Name="DicKato2" Relationship="Self.FK_DicKato_DicKato" FromRole="DicKato1" ToRole="DicKato" />
+        </EntityType>
+        <EntityType Name="DicRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NameKz" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NameRu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Guid" />
+          <NavigationProperty Name="DicRoles1" Relationship="Self.FK_DICROLES_FK_DICROL_DICROLES" FromRole="DicRoles" ToRole="DicRoles1" />
+          <NavigationProperty Name="DicRoles2" Relationship="Self.FK_DICROLES_FK_DICROL_DICROLES" FromRole="DicRoles1" ToRole="DicRoles" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_USERROLE_FK_USERRO_DICROLES" FromRole="DicRoles" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="AnnouncementId" Type="Guid" Nullable="false" />
+          <Property Name="BuyerId" Type="Guid" Nullable="false" />
+          <Property Name="BankAccountId" Type="Guid" Nullable="false" />
+          <Property Name="BankWarranty" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="XmlSign" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Announcements" Relationship="Self.FK_Orders_Announcements" FromRole="Orders" ToRole="Announcements" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserPermissions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Permissions" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserPermissions_Users" FromRole="UserPermissions" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="DicRoles" Relationship="Self.FK_USERROLE_FK_USERRO_DICROLES" FromRole="UserRoles" ToRole="DicRoles" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_USERROLE_FK_USERRO_USERS" FromRole="UserRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IIN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MobilePhone" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExtraPhone" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="WorkPhone" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="UserPosition" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyId" Type="Guid" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsHeadCompany" Type="Boolean" />
+          <NavigationProperty Name="Announcements" Relationship="Self.FK_Announcements_Users" FromRole="Users" ToRole="Announcements" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_USERS_FK_USERS__COMPANIE" FromRole="Users" ToRole="Companies" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Users" FromRole="Users" ToRole="Orders" />
+          <NavigationProperty Name="UserPermissions" Relationship="Self.FK_UserPermissions_Users" FromRole="Users" ToRole="UserPermissions" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_USERROLE_FK_USERRO_USERS" FromRole="Users" ToRole="UserRoles" />
+        </EntityType>
+        <Association Name="FK_Announcements_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Announcements" Type="Self.Announcements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Announcements">
+              <PropertyRef Name="SellerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Announcements">
+          <End Role="Announcements" Type="Self.Announcements" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Announcements">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="AnnouncementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BANKACCO_FK_BANKAC_COMPANIE">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="BankAccounts" Type="Self.BankAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankAccounts">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANIE_FK_OBLAST_DICKATO">
+          <End Role="DicKato" Type="Self.DicKato" Multiplicity="0..1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DicKato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="Oblast" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPANIE_FK_REGION_DICKATO">
+          <End Role="DicKato" Type="Self.DicKato" Multiplicity="0..1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DicKato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="Region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERS_FK_USERS__COMPANIE">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DicKato_DicKato">
+          <End Role="DicKato" Type="Self.DicKato" Multiplicity="1" />
+          <End Role="DicKato1" Type="Self.DicKato" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="DicKato">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DicKato1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DICROLES_FK_DICROL_DICROLES">
+          <End Role="DicRoles" Type="Self.DicRoles" Multiplicity="0..1" />
+          <End Role="DicRoles1" Type="Self.DicRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DicRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DicRoles1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERROLE_FK_USERRO_DICROLES">
+          <End Role="DicRoles" Type="Self.DicRoles" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DicRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="BuyerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPermissions_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserPermissions" Type="Self.UserPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPermissions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERROLE_FK_USERRO_USERS">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PetDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Announcements" EntityType="Self.Announcements" />
+          <EntitySet Name="BankAccounts" EntityType="Self.BankAccounts" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" />
+          <EntitySet Name="DicKato" EntityType="Self.DicKato" />
+          <EntitySet Name="DicRoles" EntityType="Self.DicRoles" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="UserPermissions" EntityType="Self.UserPermissions" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Announcements_Users" Association="Self.FK_Announcements_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Announcements" EntitySet="Announcements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Announcements" Association="Self.FK_Orders_Announcements">
+            <End Role="Announcements" EntitySet="Announcements" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BANKACCO_FK_BANKAC_COMPANIE" Association="Self.FK_BANKACCO_FK_BANKAC_COMPANIE">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="BankAccounts" EntitySet="BankAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANIE_FK_OBLAST_DICKATO" Association="Self.FK_COMPANIE_FK_OBLAST_DICKATO">
+            <End Role="DicKato" EntitySet="DicKato" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPANIE_FK_REGION_DICKATO" Association="Self.FK_COMPANIE_FK_REGION_DICKATO">
+            <End Role="DicKato" EntitySet="DicKato" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERS_FK_USERS__COMPANIE" Association="Self.FK_USERS_FK_USERS__COMPANIE">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DicKato_DicKato" Association="Self.FK_DicKato_DicKato">
+            <End Role="DicKato" EntitySet="DicKato" />
+            <End Role="DicKato1" EntitySet="DicKato" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DICROLES_FK_DICROL_DICROLES" Association="Self.FK_DICROLES_FK_DICROL_DICROLES">
+            <End Role="DicRoles" EntitySet="DicRoles" />
+            <End Role="DicRoles1" EntitySet="DicRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERROLE_FK_USERRO_DICROLES" Association="Self.FK_USERROLE_FK_USERRO_DICROLES">
+            <End Role="DicRoles" EntitySet="DicRoles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Users" Association="Self.FK_Orders_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPermissions_Users" Association="Self.FK_UserPermissions_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserPermissions" EntitySet="UserPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERROLE_FK_USERRO_USERS" Association="Self.FK_USERROLE_FK_USERRO_USERS">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PetEntityModelContainer" CdmEntityContainer="PetDbContext">
+          <EntitySetMapping Name="Announcements">
+            <EntityTypeMapping TypeName="PetEntityModel.Announcements">
+              <MappingFragment StoreEntitySet="Announcements">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="SellerId" ColumnName="SellerId" />
+                <ScalarProperty Name="DateBidding" ColumnName="DateBidding" />
+                <ScalarProperty Name="StartPrice" ColumnName="StartPrice" />
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
+                <ScalarProperty Name="DeadlineDate" ColumnName="DeadlineDate" />
+                <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
+                <ScalarProperty Name="Composition" ColumnName="Composition" />
+                <ScalarProperty Name="LotSize" ColumnName="LotSize" />
+                <ScalarProperty Name="LotCount" ColumnName="LotCount" />
+                <ScalarProperty Name="TypeDelivery" ColumnName="TypeDelivery" />
+                <ScalarProperty Name="DateDelivery" ColumnName="DateDelivery" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="XmlSign" ColumnName="XmlSign" />
+                <ScalarProperty Name="XmlSign2" ColumnName="XmlSign2" />
+                <ScalarProperty Name="No" ColumnName="No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankAccounts">
+            <EntityTypeMapping TypeName="PetEntityModel.BankAccounts">
+              <MappingFragment StoreEntitySet="BankAccounts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BIK" ColumnName="BIK" />
+                <ScalarProperty Name="IIK" ColumnName="IIK" />
+                <ScalarProperty Name="Kbe" ColumnName="Kbe" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+                <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+                <ScalarProperty Name="AccountCurrency" ColumnName="AccountCurrency" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="PetEntityModel.Companies">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateUserId" ColumnName="CreateUserId" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="JuridicalName" ColumnName="JuridicalName" />
+                <ScalarProperty Name="BIN" ColumnName="BIN" />
+                <ScalarProperty Name="CompanyHeadName" ColumnName="CompanyHeadName" />
+                <ScalarProperty Name="Oblast" ColumnName="Oblast" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="JuridicalAddress" ColumnName="JuridicalAddress" />
+                <ScalarProperty Name="FactAddress" ColumnName="FactAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DicKato">
+            <EntityTypeMapping TypeName="PetEntityModel.DicKato">
+              <MappingFragment StoreEntitySet="DicKato">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="NameKz" ColumnName="NameKz" />
+                <ScalarProperty Name="NameRu" ColumnName="NameRu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DicRoles">
+            <EntityTypeMapping TypeName="PetEntityModel.DicRoles">
+              <MappingFragment StoreEntitySet="DicRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="NameKz" ColumnName="NameKz" />
+                <ScalarProperty Name="NameRu" ColumnName="NameRu" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="PetEntityModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="AnnouncementId" ColumnName="AnnouncementId" />
+                <ScalarProperty Name="BuyerId" ColumnName="BuyerId" />
+                <ScalarProperty Name="BankAccountId" ColumnName="BankAccountId" />
+                <ScalarProperty Name="BankWarranty" ColumnName="BankWarranty" />
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="XmlSign" ColumnName="XmlSign" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPermissions">
+            <EntityTypeMapping TypeName="PetEntityModel.UserPermissions">
+              <MappingFragment StoreEntitySet="UserPermissions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Permissions" ColumnName="Permissions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="PetEntityModel.UserRoles">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PetEntityModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="IIN" ColumnName="IIN" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="ExtraPhone" ColumnName="ExtraPhone" />
+                <ScalarProperty Name="WorkPhone" ColumnName="WorkPhone" />
+                <ScalarProperty Name="UserPosition" ColumnName="UserPosition" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsHeadCompany" ColumnName="IsHeadCompany" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

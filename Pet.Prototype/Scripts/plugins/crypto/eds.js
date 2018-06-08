@@ -196,10 +196,6 @@ function fillOrgData(data) {
             document.getElementById('signCompanyName').value = organizationName.replaceAll('\\\"', '\"');
         }
 
-        //----
-        var $active = $('.wizard .nav-tabs li.active');
-        $active.next().removeClass('disabled');
-        nextTab($active);
 
     } else {
         //document.getElementById('signBIN').style.display = 'none';
@@ -332,6 +328,7 @@ function fillKeysBack(result) {
         if (result['errorCode'] === "WRONG_PASSWORD" && result['result'] > -1) {
             alert("Неправильный пароль! Количество оставшихся попыток: " + result['result']);
         } else if (result['errorCode'] === "WRONG_PASSWORD") {
+            $('.error_password').val("error");
             alert("Неправильный пароль!");
         } else {
             alert(result['errorCode']);
